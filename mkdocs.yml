@@ -1,7 +1,6 @@
 # Project information
 site_name: mkdocs-link-preview-plugin
 
-
 plugins:
   -  link-preview
 

@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup, find_packages
 
-VERSION_NUMBER = '0.2.2'
+VERSION_NUMBER = '0.2.5'
 
 
 def read_file(fname):
@@ -37,6 +37,8 @@ setup(
         'Programming Language :: Python :: 3.7'
     ],
     packages=find_packages(),
+    package_data={'': ['resources/template.html']},
+    include_package_data=True,
     entry_points={
         'mkdocs.plugins': [
             'link-preview = mkdocs_link_preview_plugin.plugin:LinkPreviewPlugin'

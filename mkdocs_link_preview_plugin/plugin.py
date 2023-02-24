@@ -1,4 +1,5 @@
 import re
+import pkgutil
 
 from mkdocs.plugins import BasePlugin
 
@@ -13,9 +14,8 @@ class LinkPreviewPlugin(BasePlugin):
         self.preview_template = None
 
     def on_config(self, config):
-        template_file = open("mkdocs_link_preview_plugin/template/preview.html", 'r')
-        self.preview_template = template_file.read()
-        template_file.close()
+        template_file = pkgutil.get_data(__name__, "resources/preview.html")
+        self.preview_template = template_file.decode('utf-8')
         return config
 
     def on_page_markdown(self, markdown, page, config, files):
@@ -34,9 +34,6 @@ class LinkPreviewPlugin(BasePlugin):
                 if line[0] == "-" or line[0] == "*":
                     line = line[1:]
                 soup = self.opengraph.get_page(line)
-
-                print("line : ")
-                print(line)
 
                 preview_html = self.preview_template
                 preview_html = preview_html.replace("{{ link }}", line)
