@@ -1,6 +1,5 @@
 import re
 
-import validators
 from mkdocs.plugins import BasePlugin
 
 from mkdocs_link_preview_plugin.opengraph import OpenGraph
@@ -34,7 +33,6 @@ class LinkPreviewPlugin(BasePlugin):
                 line.replace(" ", "")
                 if line[0] == "-" or line[0] == "*":
                     line = line[1:]
-                validators.url(line)
                 soup = self.opengraph.get_page(line)
 
                 print("line : ")
