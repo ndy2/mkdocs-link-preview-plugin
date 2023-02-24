@@ -12,7 +12,7 @@ class LinkPreviewPlugin(BasePlugin):
     def __init__(self):
         self.opengraph = OpenGraph()
         self.url_pattern = re.compile(
-            "^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$")
+            "^((http|https)?://)?(?P<host>[a-zA-Z0-9./?:@\\-_=#]+\\.[a-zA-Z]{2,6})[a-zA-Z0-9.&/?:@\\-_=#가-힇]*$")
         self.fallback_template = None
         self.preview_template = None
 
@@ -33,7 +33,7 @@ class LinkPreviewPlugin(BasePlugin):
 
             preview_htmls = ""
             for line in lines:
-                line.replace(" ", "")
+                line = line.replace(" ", "")
                 if line[0] == "-" or line[0] == "*":
                     line = line[1:]
                 try:
@@ -50,9 +50,9 @@ class LinkPreviewPlugin(BasePlugin):
                 except:
                     url_match = self.url_pattern.match(line)
                     if url_match:
-                        title = url_match.group(3)
+                        title = url_match.group('host')
                     else:
-                        title = "no url provided for below url"
+                        title = "no url provided"
                     fallback_html = self.fallback_template
                     fallback_html = fallback_html.replace("{{ link }}", line)
                     fallback_html = fallback_html.replace("{{ title }}", title)
