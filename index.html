@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>mkdocs-link-preview-plugin</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link href="assets/link-preview.css" rel="stylesheet">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">mkdocs-link-preview-plugin</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#demo" class="nav-link">Demo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#when-some-data-are-missing-fallback-cases" class="nav-link">When some data are missing/ fallback cases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#warning" class="nav-link">warning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="demo">Demo</h2>
+<pre><code>``'preview
+https://www.regex101.com/
+'``
+</code></pre>
+<p>rendered as </p>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://www.regex101.com/" target="_blank">
+    <div class="rich-link-image-container">
+        <div class="rich-link-image" style="background-image: url('https://regex101.com/static/assets/card.png')"></div>
+    </div>
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">regex101</h1>
+        <p class="rich-link-card-description">Regular expression tester with syntax highlighting, explanation, cheat sheet for PHP/PCRE, Python, GO, JavaScript, Java, C#/.NET.</p>
+        <p class="rich-link-href">https://www.regex101.com/</p>
+    </div>
+</a></div>
+
+<p>with default css.</p>
+<hr />
+<p>it reads the code block content line by line and remove all spaces and drop first character if it is '-' or '*'
+that is it supports multiple preview @ same codeblock with list notation</p>
+<pre><code>``'preview
+- https://github.com/ndy2/mkdocs-link-preview-plugin
+- https://www.youtube.com/@Kotlin
+- https://www.google.com/
+'``
+</code></pre>
+<p>rendered as</p>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://github.com/ndy2/mkdocs-link-preview-plugin" target="_blank">
+    <div class="rich-link-image-container">
+        <div class="rich-link-image" style="background-image: url('https://opengraph.githubassets.com/aa4f9ff06655d1bf5bc221c77a10504b3a093eeb2d5808aec4cda8feb4fa2947/ndy2/mkdocs-link-preview-plugin')"></div>
+    </div>
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">GitHub</h1>
+        <p class="rich-link-card-description">A MkDocs plugin that supports external link preview - GitHub - ndy2/mkdocs-link-preview-plugin: A MkDocs plugin that supports external link preview</p>
+        <p class="rich-link-href">https://github.com/ndy2/mkdocs-link-preview-plugin</p>
+    </div>
+</a></div>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://www.youtube.com/@Kotlin" target="_blank">
+    <div class="rich-link-image-container">
+        <div class="rich-link-image" style="background-image: url('https://yt3.googleusercontent.com/QfykgcpEnn5dDj_yG8NwtcQiSiSSZuT091pzEACtBECGh7xuVydpV2l6rEw1IJB0kzLQaTKnfg=s900-c-k-c0x00ffffff-no-rj')"></div>
+    </div>
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">YouTube</h1>
+        <p class="rich-link-card-description">Expand your Kotlin skills with the official YouTube channel of the Kotlin programming language. 
+Kotlin Tutorials, Kotlin Multiplatform, Kotlin Coroutines, Kotlin Tips, Talking Kotlin Podcast, ATOM Podcast.
+
+Kotlin is a modern programming language that makes developers happier.
+Developed by JetBrains & Open-source Contributors.
+
+Subscribe for shows, the latest news, and live events!
+</p>
+        <p class="rich-link-href">https://www.youtube.com/@Kotlin</p>
+    </div>
+</a></div>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://www.google.com/" target="_blank">
+    <div class="rich-link-image-container">
+        <div class="rich-link-image" style="background-image: url('')"></div>
+    </div>
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title"></h1>
+        <p class="rich-link-card-description"></p>
+        <p class="rich-link-href">https://www.google.com/</p>
+    </div>
+</a></div>
+
+<hr />
+<h2 id="when-some-data-are-missing-fallback-cases">When some data are missing/ fallback cases</h2>
+<pre><code>``'preview
+- http://127.0.0.1:8000/
+- https://www.youtube.com/@paka2
+- https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview
+'``
+</code></pre>
+<p>became</p>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="http://127.0.0.1:8000/" target="_blank">
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">no url provided</h1>
+        <p class="rich-link-href">http://127.0.0.1:8000/</p>
+    </div>
+</a></div>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://www.youtube.com/@paka2" target="_blank">
+    <div class="rich-link-image-container">
+        <div class="rich-link-image" style="background-image: url('https://yt3.googleusercontent.com/ytc/AL5GRJVh-RHG_HFXSUQ_sAYEaH6eR2c2H7-7afj_FKaFbg=s900-c-k-c0x00ffffff-no-rj')"></div>
+    </div>
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">YouTube</h1>
+        <p class="rich-link-card-description"></p>
+        <p class="rich-link-href">https://www.youtube.com/@paka2</p>
+    </div>
+</a></div>
+<div class="rich-link-card-container">
+    <a class="rich-link-card" href="https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview" target="_blank">
+    <div class="rich-link-card-text">
+        <h1 class="rich-link-card-title">www.udemy.com</h1>
+        <p class="rich-link-href">https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview</p>
+    </div>
+</a></div>
+
+<p>for each 
+- not valid url
+- no description provided
+- no open graph data found</p>
+<h2 id="warning">warning</h2>
+<p>no escape syntax is provided. (it tries to convert everywhere - even in code blocks)</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.4.2
+Build Date UTC : 2023-02-24 16:46:58.078155+00:00
+-->
