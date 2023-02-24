@@ -13,7 +13,7 @@ class LinkPreviewPlugin(BasePlugin):
         self.preview_template = None
 
     def on_config(self, config):
-        template_file = open("resources/template.html", 'r')
+        template_file = open("mkdocs_link_preview_plugin/template/preview.html", 'r')
         self.preview_template = template_file.read()
         template_file.close()
         return config
