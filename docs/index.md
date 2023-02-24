@@ -26,6 +26,7 @@ that is it supports multiple preview @ same codeblock with list notation
 ``'preview
 - https://github.com/ndy2/mkdocs-link-preview-plugin
 - https://www.youtube.com/@Kotlin
+- https://www.google.com/
 '``
 ````
 
@@ -34,11 +35,12 @@ rendered as
 ```preview
 - https://github.com/ndy2/mkdocs-link-preview-plugin
 - https://www.youtube.com/@Kotlin
+- https://www.google.com/
 ```
 
 ---
 
-## Some more examples
+## When some data are missing/ fallback cases
 ````
 ``'preview
 - http://127.0.0.1:8000/
@@ -54,6 +56,11 @@ became
 - https://www.youtube.com/@paka2
 - https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview
 ```
+
+for each 
+- not valid url
+- no description provided
+- no open graph data found
 
 
 ## warning 
