@@ -1,6 +1,6 @@
 # mkdocs-obsidian-support-plugin
 ---
-Plugin for [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) provide external link preview.
+Plugin for [mkdocs](https://www.mkdocs.org/) provide external link preview.
 
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-link-preview-plugin)](https://pypi.org/project/mkdocs-link-preview-plugin/)
 
