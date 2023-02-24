@@ -1,0 +1,6 @@
+.pypirc
+dist
+*.egg-info
+venv
+.idea
+docs/.obsidian
