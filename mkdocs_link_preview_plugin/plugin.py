@@ -11,11 +11,14 @@ class LinkPreviewPlugin(BasePlugin):
 
     def __init__(self):
         self.opengraph = OpenGraph()
+        self.url_pattern = re.compile(
+            "^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$")
+        self.fallback_template = None
         self.preview_template = None
 
     def on_config(self, config):
-        template_file = pkgutil.get_data(__name__, "resources/preview.html")
-        self.preview_template = template_file.decode('utf-8')
+        self.preview_template = pkgutil.get_data(__name__, "resources/preview.html").decode('utf-8')
+        self.fallback_template = pkgutil.get_data(__name__, "resources/fallback.html").decode('utf-8')
         return config
 
     def on_page_markdown(self, markdown, page, config, files):
@@ -33,15 +36,28 @@ class LinkPreviewPlugin(BasePlugin):
                 line.replace(" ", "")
                 if line[0] == "-" or line[0] == "*":
                     line = line[1:]
-                soup = self.opengraph.get_page(line)
+                try:
+                    soup = self.opengraph.get_page(line)
+                    preview_html = self.preview_template
+                    preview_html = preview_html.replace("{{ link }}", line)
+                    preview_html = preview_html.replace("{{ image-url }}", self.opengraph.get_og_image(soup) or "")
+                    preview_html = preview_html.replace("{{ title }}", self.opengraph.get_og_site_name(soup) or "")
+                    preview_html = preview_html.replace("{{ description }}",
+                                                        self.opengraph.get_og_description(soup) or "")
+                    preview_htmls += preview_html
 
-                preview_html = self.preview_template
-                preview_html = preview_html.replace("{{ link }}", line)
-                preview_html = preview_html.replace("{{ image-url }}", self.opengraph.get_og_image(soup))
-                preview_html = preview_html.replace("{{ title }}", self.opengraph.get_og_site_name(soup))
-                preview_html = preview_html.replace("{{ description }}", self.opengraph.get_og_description(soup))
+                ## open graph metadata not found
+                except:
+                    url_match = self.url_pattern.match(line)
+                    if url_match:
+                        title = url_match.group(3)
+                    else:
+                        title = "no url provided for below url"
+                    fallback_html = self.fallback_template
+                    fallback_html = fallback_html.replace("{{ link }}", line)
+                    fallback_html = fallback_html.replace("{{ title }}", title)
 
-                preview_htmls += preview_html
+                    preview_htmls += fallback_html
 
             converted_markdown += markdown[index:start]
             converted_markdown += preview_htmls

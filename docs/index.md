@@ -36,5 +36,25 @@ rendered as
 - https://www.youtube.com/@Kotlin
 ```
 
+---
+
+## Some more examples
+````
+``'preview
+- http://127.0.0.1:8000/
+- https://www.youtube.com/@paka2
+- https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview
+'``
+````
+
+became
+
+```preview
+- http://127.0.0.1:8000/
+- https://www.youtube.com/@paka2
+- https://www.udemy.com/course/spring-webflux/learn/lecture/25132644#overview
+```
+
+
 ## warning 
 no escape syntax is provided. (it tries to convert everywhere - even in code blocks)
