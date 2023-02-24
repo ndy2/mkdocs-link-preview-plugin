@@ -5,8 +5,11 @@ Plugin for [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) provi
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-link-preview-plugin)](https://pypi.org/project/mkdocs-link-preview-plugin/)
 
 ```text
+pip install beautifulsoup4
 pip install mkdocs-link-preview-plugin
 ```
+
+It requires beautifulsoup4 for crawling the open grapth protocol metadata.
 
 ## Usage
 Activate the plugin in mkdocs.yml 
