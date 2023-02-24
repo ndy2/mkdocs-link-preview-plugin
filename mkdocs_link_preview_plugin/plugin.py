@@ -39,11 +39,23 @@ class LinkPreviewPlugin(BasePlugin):
                 try:
                     soup = self.opengraph.get_page(line)
                     preview_html = self.preview_template
-                    preview_html = preview_html.replace("{{ link }}", line)
-                    preview_html = preview_html.replace("{{ image-url }}", self.opengraph.get_og_image(soup) or "")
-                    preview_html = preview_html.replace("{{ title }}", self.opengraph.get_og_site_name(soup) or "")
-                    preview_html = preview_html.replace("{{ description }}",
-                                                        self.opengraph.get_og_description(soup) or "")
+                    link = line
+
+                    image_url = self.opengraph.get_og_image(soup)
+                    title = self.opengraph.get_og_site_name(soup)
+                    description = self.opengraph.get_og_description(soup)
+
+                    if image_url is None:
+                        image_url = ""
+                    if title is None:
+                        title = ""
+                    if description is None:
+                        description = ""
+
+                    preview_html = preview_html.replace("{{ link }}", link)
+                    preview_html = preview_html.replace("{{ image-url }}", image_url)
+                    preview_html = preview_html.replace("{{ title }}", title)
+                    preview_html = preview_html.replace("{{ description }}", description)
                     preview_htmls += preview_html
 
                 ## open graph metadata not found
