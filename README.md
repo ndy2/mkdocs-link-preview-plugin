@@ -23,13 +23,14 @@ extra_css:
 It converts below codeblock syntax to preview-html based on [The Open Graph Protocol](https://ogp.me/).
 
 ````
-'''preview
+```preview
 https://github.com/ndy2/mkdocs-link-preview-plugin
-'''
+```
 ````
 
 rendered as
 
+![image](https://user-images.githubusercontent.com/67302707/221196960-38f85c9b-ef87-4eb1-b6c7-b93c1e3df4aa.png)
 
 
 with default css configuration.
