@@ -32,7 +32,7 @@ https://github.com/ndy2/mkdocs-link-preview-plugin
 
 rendered as
 
-![image](https://user-images.githubusercontent.com/67302707/221196960-38f85c9b-ef87-4eb1-b6c7-b93c1e3df4aa.png)
+![image](https://user-images.githubusercontent.com/67302707/221235406-38958e37-2031-4f65-828f-ef41cfa2395a.png)
 
 with default css configuration.
 
