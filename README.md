@@ -3,11 +3,14 @@
 Plugin for [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) provide external link preview.
 
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-link-preview-plugin)](https://pypi.org/project/mkdocs-link-preview-plugin/)
-[![GitHub](https://img.shields.io/github/license/ndy2/mkdocs-link-preview-plugin)](https://github.com/ndy2/mkdocs-link-preview-plugin/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/ndy2/mkdocs-link-preview-plugin)](https://github.com/ndy2/mkdocs-link-preview-plugin/blob/main/LICENSE)
 
 ```text
 pip install mkdocs-link-preview-plugin
 ```
+
+## Demo
+- super simple demo link - https://ndy2.github.io/mkdocs-link-preview-plugin/
 
 ## Usage
 Activate the plugin in mkdocs.yml 
